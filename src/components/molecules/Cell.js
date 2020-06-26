@@ -1,8 +1,8 @@
 import React from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled from 'styled-components';
 import {connect} from 'react-redux';
 
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   display: flex;
   background-color: ${props => props.theme.PRIMARY_BACKGROUND_COLOR_LIGHT};
   margin: 4px;
@@ -14,13 +14,19 @@ const Container = styled.View`
 const StatusView = styled.View`
   display: flex;
   background-color: ${props => props.theme.PRIMARY_COLOR};
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 7.5px;
   align-self: center;
   border: 1px;
   border-color: ${props => props.theme.PRIMARY_FOREGROUND_COLOR};
+`;
+
+const HideView = styled.View`
+  display: flex;
+  border-radius: 5px;
+  align-self: center;
 `;
 
 const Header = styled.View`
@@ -29,6 +35,7 @@ const Header = styled.View`
   overflow: hidden;
   border-radius: 5px;
   flex-direction: row;
+  justify-content: flex-start;
 `;
 
 const StyledText = styled.Text`
@@ -40,6 +47,7 @@ const StyledText = styled.Text`
   font-weight: bold;
   color: ${props => props.theme.PRIMARY_TEXT_COLOR};
 `;
+
 const IDTextStyle = styled.Text`
   flex: 1;
   display: flex;
@@ -63,20 +71,18 @@ class Cell extends React.Component {
   render() {
     const {item, onPress} = this.props;
     return (
-      <ThemeProvider theme={this.props.theme}>
-        <Container onPress={onPress}>
-          <Header>
-            <StatusView />
-            <StyledText numberOfLines={1} ellipsizeMode="tail">
-              {item.title.toString().substring(0, 40)}
-            </StyledText>
-            <IDTextStyle>{'iD: ' + item.id}</IDTextStyle>
-          </Header>
-          <BodyText numberOfLines={2} ellipsizeMode="tail">
-            {item.body.toString().substring(0, 100)}
-          </BodyText>
-        </Container>
-      </ThemeProvider>
+      <Container onPress={onPress}>
+        <Header>
+          {item.status === 'pinned' ? <StatusView /> : <HideView />}
+          <StyledText numberOfLines={1} ellipsizeMode="tail">
+            {item.title.toString().substring(0, 40)}
+          </StyledText>
+          <IDTextStyle>{'iD: ' + item.id}</IDTextStyle>
+        </Header>
+        <BodyText numberOfLines={2} ellipsizeMode="tail">
+          {item.body.toString().substring(0, 100)}
+        </BodyText>
+      </Container>
     );
   }
 }

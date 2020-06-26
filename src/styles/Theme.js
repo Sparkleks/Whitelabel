@@ -18,6 +18,7 @@ export const base = {
 };
 
 export const darkTheme = {
+  PRIMARY_THEME_TYPE: 'darkTheme',
   PRIMARY_BACKGROUND_COLOR: '#000000',
   PRIMARY_BACKGROUND_COLOR_LIGHT: '#797979',
 
@@ -32,6 +33,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
+  PRIMARY_THEME_TYPE: 'lightTheme',
   PRIMARY_BACKGROUND_COLOR: '#E8E7E7',
   PRIMARY_BACKGROUND_COLOR_LIGHT: '#ffffff',
 
@@ -88,7 +90,7 @@ export const colorOptions = {
     PRIMARY_COLOR_BOLD: '#424242',
     PRIMARY_FOREGROUND_COLOR: '#ffffff',
   },
-  purlple: {
+  purple: {
     PRIMARY_COLOR_FAINT: '#EDE7F6',
     PRIMARY_COLOR_LIGHT: '#9575CD',
     PRIMARY_COLOR: '#673AB7',

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled from 'styled-components';
 import {connect} from 'react-redux';
 
 const TouchableOpacity = styled.TouchableOpacity`
@@ -24,11 +24,9 @@ class Button extends React.Component {
   render() {
     const {title, onPress} = this.props;
     return (
-      <ThemeProvider theme={this.props.theme}>
-        <TouchableOpacity onPress={onPress}>
-          <Text>{title}</Text>
-        </TouchableOpacity>
-      </ThemeProvider>
+      <TouchableOpacity onPress={onPress}>
+        <Text>{title}</Text>
+      </TouchableOpacity>
     );
   }
 }

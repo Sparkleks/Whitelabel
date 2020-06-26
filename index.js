@@ -10,9 +10,10 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import themeReducer from './src/redux/reducers/themeReducer';
 import postReducer from './src/redux/reducers/postReducer';
+import pinnedReducer from './src/redux/reducers/pinnedReducer';
 
 const store = createStore(
-  combineReducers({themeReducer, postReducer}),
+  combineReducers({themeReducer, postReducer, pinnedReducer}),
   applyMiddleware(thunk),
 );
 
